@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | ExChange Platform</title>
+    <meta name="description" content="Get help and support for your ExChange transactions. Contact our support team 24/7.">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Page specific styles */
+        .support-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 150px 0 80px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .support-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .support-header > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .support-card {
+            background-color: var(--dark-element);
+            border-radius: 15px;
+            border: 1px solid var(--dark-border);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .support-card:hover {
+            transform: translateY(-10px) rotate3d(1, 1, 0, 2deg);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+        }
+        
+        .support-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            box-shadow: 0 10px 25px var(--primary-glow);
+            transition: all 0.3s ease;
+        }
+        
+        .support-card:hover .support-icon {
+            transform: rotate(15deg) scale(1.1);
+            box-shadow: 0 15px 35px var(--primary-glow);
+        }
+        
+        .faq-card {
+            background-color: var(--dark-element);
+            border: 1px solid var(--dark-border);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .faq-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .faq-header {
+            padding: 20px;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid var(--dark-border);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-header:hover {
+            background-color: rgba(94, 114, 235, 0.1);
+        }
+        
+        .faq-header h5 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .faq-header h5 i {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-header[aria-expanded="true"] h5 i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-body {
+            padding: 20px;
+        }
+        
+        .contact-form {
+            background-color: var(--dark-element);
+            border-radius: 15px;
+            border: 1px solid var(--dark-border);
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-floating {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            background-color: var(--dark-input);
+            border: 1px solid var(--dark-border);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .form-control:focus {
+            background-color: var(--dark-input-focus);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-glow);
+            color: white;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px var(--primary-glow);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--primary-glow);
+        }
+        
+        /* Floating elements in background */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, rgba(94, 114, 235, 0.2) 0%, transparent 70%);
+            animation: float 15s infinite ease-in-out;
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            width: 150px;
+            height: 150px;
+            animation-duration: 20s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            width: 200px;
+            height: 200px;
+            animation-duration: 25s;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 10%;
+            left: 20%;
+            width: 120px;
+            height: 120px;
+            animation-duration: 18s;
+            animation-delay: 4s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">Ex<span class="text-primary">Change</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="exchangers.html">Find Exchangers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="support.html">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Support Header -->
+    <header class="support-header">
+        <!-- Floating Background Elements -->
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="text-white mb-4 display-3 fw-bold">How Can We Help You?</h1>
+                    <p class="text-white mb-5 lead" style="font-size: 1.3rem; line-height: 1.8;">Browse our help center or contact our support team for assistance</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Support Options -->
+    <section class="py-5 mt-5" style="padding-top: 100px;">
+        <div class="container">
+            <div class="row">
+                <!-- Support Option 1 -->
+                <div class="col-md-4">
+                    <div class="support-card text-center animate-fade-in">
+                        <div class="support-icon mx-auto">
+                            <i class="fas fa-life-ring"></i>
+                        </div>
+                        <h4 class="mt-4 mb-4">General Support</h4>
+                        <p>Need help with the platform? Have questions about how things work?</p>
+                        <a href="#contact-form" class="btn btn-primary mt-4 px-4 py-2">Contact Support</a>
+                    </div>
+                </div>
+                
+                <!-- Support Option 2 -->
+                <div class="col-md-4">
+                    <div class="support-card text-center animate-fade-in" style="animation-delay: 0.2s;">
+                        <div class="support-icon mx-auto">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h4 class="mt-4 mb-4">Report an Issue</h4>
+                        <p>Encountered a problem with an exchanger or a transaction?</p>
+                        <a href="#contact-form" class="btn btn-primary mt-4 px-4 py-2">Report Now</a>
+                    </div>
+                </div>
+                
+                <!-- Support Option 3 -->
+                <div class="col-md-4">
+                    <div class="support-card text-center animate-fade-in" style="animation-delay: 0.4s;">
+                        <div class="support-icon mx-auto">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h4 class="mt-4 mb-4">Become an Exchanger</h4>
+                        <p>Interested in joining our platform as a verified exchanger?</p>
+                        <a href="#contact-form" class="btn btn-primary mt-4 px-4 py-2">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-dark mt-5" style="padding-top: 100px; padding-bottom: 100px;">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Frequently Asked Questions</h2>
+                    <p class="lead">Find answers to the most common questions about using ExChange</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- FAQ Accordion -->
+                    <div class="accordion" id="faqAccordion">
+                        <!-- FAQ Item 1 -->
+                        <div class="faq-card animate-fade-in">
+                            <div class="faq-header" id="headingOne" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h5>
+                                    What is ExChange and how does it work?
+                                    <i class="fas fa-chevron-down"></i>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="faq-body">
+                                    <p>ExChange is a platform that connects users who need to exchange PayPal funds with verified exchangers. Our platform vets all exchangers to ensure they are legitimate and trustworthy. Users can browse available exchangers, view their profiles, ratings, and services offered, then contact them directly to arrange an exchange.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 2 -->
+                        <div class="faq-card animate-fade-in" style="animation-delay: 0.1s;">
+                            <div class="faq-header collapsed" id="headingTwo" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <h5>
+                                    Is it safe to exchange funds through this platform?
+                                    <i class="fas fa-chevron-down"></i>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="faq-body">
+                                    <p>Yes, ExChange prioritizes safety and security. All exchangers on our platform go through a rigorous verification process, including identity verification, business verification, and PayPal account verification. Additionally, our rating and review system helps users make informed decisions by seeing others' experiences with each exchanger.</p>
+                                    <p>However, we recommend users to:</p>
+                                    <ul>
+                                        <li>Only work with verified exchangers on our platform</li>
+                                        <li>Check reviews and ratings before proceeding</li>
+                                        <li>Start with smaller transactions with new exchangers</li>
+                                        <li>Report any suspicious behavior immediately</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 3 -->
+                        <div class="faq-card animate-fade-in" style="animation-delay: 0.2s;">
+                            <div class="faq-header collapsed" id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <h5>
+                                    How do I find the right exchanger for my needs?
+                                    <i class="fas fa-chevron-down"></i>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="faq-body">
+                                    <p>To find the right exchanger:</p>
+                                    <ol>
+                                        <li>Use our search and filter options to narrow down exchangers based on the services you need (PayPal to Bank, PayPal to Crypto, etc.)</li>
+                                        <li>Review their profiles, including their verification status, success rate, and volume of transactions</li>
+                                        <li>Check their ratings and read reviews from other users</li>
+                                        <li>Consider their response time and availability</li>
+                                        <li>Contact them directly through the platform to discuss your specific needs and their rates</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 4 -->
+                        <div class="faq-card animate-fade-in" style="animation-delay: 0.3s;">
+                            <div class="faq-header collapsed" id="headingFour" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <h5>
+                                    What fees does ExChange charge?
+                                    <i class="fas fa-chevron-down"></i>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="faq-body">
+                                    <p>ExChange does not charge any fees to users looking to exchange funds. The platform is free to use for finding and contacting exchangers. Exchangers may charge their own fees for their services, which will vary depending on the type of exchange, amount, and current market rates.</p>
+                                    <p>For exchangers, there is a monthly subscription fee to maintain verified status on our platform. This helps us ensure that only serious and professional exchangers are available to our users.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 5 -->
+                        <div class="faq-card animate-fade-in" style="animation-delay: 0.4s;">
+                            <div class="faq-header collapsed" id="headingFive" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <h5>
+                                    What should I do if I encounter an issue with an exchanger?
+                                    <i class="fas fa-chevron-down"></i>
+                                </h5>
+                            </div>
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="faq-body">
+                                    <p>If you encounter any issues with an exchanger, please:</p>
+                                    <ol>
+                                        <li>First, try to resolve the issue directly with the exchanger through their contact channels</li>
+                                        <li>If the issue persists, use our "Report an Issue" option in the support section</li>
+                                        <li>Provide all relevant details, including transaction information, communication history, and any evidence</li>
+                                        <li>Our support team will investigate the matter and take appropriate action</li>
+                                        <li>For serious issues involving fraud, we recommend also reporting to the relevant financial authorities</li>
+                                    </ol>
+                                    <p>We take all reports seriously and will suspend or remove exchangers who violate our terms of service or engage in fraudulent activities.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-5" id="contact-form">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Contact Our Support Team</h2>
+                    <p class="lead">Have a question or need assistance? Fill out the form below and we'll get back to you as soon as possible.</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form animate-fade-in">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <label for="name">Your Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <label for="email">Your Email</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-floating">
+                                <select class="form-select" id="subject">
+                                    <option selected>Select a subject</option>
+                                    <option>General Support</option>
+                                    <option>Report an Issue</option>
+                                    <option>Become an Exchanger</option>
+                                    <option>Other</option>
+                                </select>
+                                <label for="subject">Subject</label>
+                            </div>
+                            
+                            <div class="form-floating">
+                                <textarea class="form-control" id="message" placeholder="Your Message" style="height: 150px"></textarea>
+                                <label for="message">Your Message</label>
+                            </div>
+                            
+                            <div class="form-check mb-4 mt-3">
+                                <input class="form-check-input" type="checkbox" id="terms">
+                                <label class="form-check-label" for="terms">
+                                    I agree to the processing of my personal data in accordance with the privacy policy
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn submit-btn">
+                                <i class="fas fa-paper-plane me-2"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Contact Methods -->
+            <div class="row mt-5 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row text-center">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="support-card h-100 animate-fade-in" style="animation-delay: 0.2s;">
+                                <div class="support-icon mx-auto">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h5>Email Us</h5>
+                                <p>support@exchange-platform.com</p>
+                                <p class="text-muted">Response within 24 hours</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="support-card h-100 animate-fade-in" style="animation-delay: 0.3s;">
+                                <div class="support-icon mx-auto">
+                                    <i class="fab fa-telegram"></i>
+                                </div>
+                                <h5>Telegram</h5>
+                                <p>@ExchangeSupport</p>
+                                <p class="text-muted">Available 9AM-9PM UTC</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="support-card h-100 animate-fade-in" style="animation-delay: 0.4s;">
+                                <div class="support-icon mx-auto">
+                                    <i class="fab fa-discord"></i>
+                                </div>
+                                <h5>Discord</h5>
+                                <p>Join our community</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary mt-2">Join Discord</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>ExChange</h5>
+                    <p>The trusted PayPal exchange platform connecting users with verified exchangers.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="exchangers.html">Find Exchangers</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <address>
+                        <p><i class="fas fa-envelope me-2"></i> support@exchange-platform.com</p>
+                        <div class="social-icons mt-3">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </address>
+                </div>
+            </div>
+            <hr class="mt-4" style="border-color: var(--dark-border);">
+            <div class="text-center">
+                <p>&copy; 2023 ExChange. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html> 

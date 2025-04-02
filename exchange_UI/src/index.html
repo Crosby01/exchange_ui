@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExChange - PayPal Exchange Platform</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Add more space between sections */
+        section {
+            padding: 120px 0;
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .stats-section {
+            background-color: var(--dark-element);
+            padding: 100px 0;
+            margin: 100px 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--dark-border);
+            border-bottom: 1px solid var(--dark-border);
+        }
+        
+        .stats-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(94, 114, 235, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-item:hover .stat-number {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .features-item {
+            display: flex;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+        
+        .features-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+            flex-shrink: 0;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 10px 20px var(--primary-glow);
+        }
+        
+        .features-content h4 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        
+        .section-title p {
+            max-width: 800px;
+            margin: 20px auto 0;
+            color: var(--muted-text);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .section-divider {
+            height: 150px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            padding-bottom: 150px;
+        }
+        
+        .cta-btn {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.5s ease;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            margin-right: 15px;
+        }
+        
+        .cta-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+        
+        .testimonials {
+            padding: 150px 0;
+            background-color: var(--dark-background);
+        }
+        
+        .cta-section {
+            padding: 150px 0;
+            background: linear-gradient(135deg, rgba(94, 114, 235, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 50%, rgba(94, 114, 235, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .card {
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Testimonial avatar styles */
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-right: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover .testimonial-avatar {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .avatar-blue {
+            background: linear-gradient(135deg, #5E72EB 0%, #8E96F3 100%);
+        }
+        
+        .avatar-teal {
+            background: linear-gradient(135deg, #4DD0E1 0%, #8AEAF7 100%);
+        }
+        
+        .avatar-orange {
+            background: linear-gradient(135deg, #FF9D4F 0%, #FFB678 100%);
+        }
+        
+        /* Counter animation styles */
+        .counter-number {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .counter-number.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Image Container Styles */
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(94, 114, 235, 0.3);
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+            background: linear-gradient(135deg, #5E72EB 0%, #8E96F3 100%);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: all 0.5s ease;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-image-container:hover .hero-image {
+            transform: scale(1.1) rotate(5deg);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(94, 114, 235, 0.4) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            mix-blend-mode: overlay;
+        }
+
+        .hero-border-effect {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #5E72EB, #8E96F3);
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(94, 114, 235, 0.5);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(94, 114, 235, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .hero-corner-accent {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #5E72EB, transparent);
+            border-radius: 50%;
+            z-index: -1;
+            box-shadow: 0 0 20px rgba(94, 114, 235, 0.3);
+        }
+
+        .hero-corner-accent.top-left {
+            top: -30px;
+            left: -30px;
+            animation: float 6s ease-in-out infinite;
+            background: linear-gradient(135deg, #5E72EB, #8E96F3);
+        }
+
+        .hero-corner-accent.top-right {
+            top: -30px;
+            right: -30px;
+            animation: float 6s ease-in-out infinite 1.5s;
+            background: linear-gradient(135deg, #8E96F3, #5E72EB);
+        }
+
+        .hero-corner-accent.bottom-left {
+            bottom: -30px;
+            left: -30px;
+            animation: float 6s ease-in-out infinite 3s;
+            background: linear-gradient(135deg, #5E72EB, #8E96F3);
+        }
+
+        .hero-corner-accent.bottom-right {
+            bottom: -30px;
+            right: -30px;
+            animation: float 6s ease-in-out infinite 4.5s;
+            background: linear-gradient(135deg, #8E96F3, #5E72EB);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { 
+                opacity: 0.5;
+                box-shadow: 0 0 30px rgba(94, 114, 235, 0.5);
+            }
+            50% { 
+                opacity: 1;
+                box-shadow: 0 0 50px rgba(94, 114, 235, 0.8);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg);
+            }
+            50% { 
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .hero-default-bg {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Ex<span class="text-primary">Change</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/exchangers.html">Find Exchangers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/support.html">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 animate-fade-in">
+                    <h1 class="display-3 fw-bold">The Secure PayPal Exchange Platform</h1>
+                    <p class="lead mt-4 mb-5" style="font-size: 1.3rem; line-height: 1.8;">Connect with verified exchangers who offer PayPal fund exchange services. Fast, secure, and reliable transactions with verified professionals.</p>
+                    <div class="mt-5">
+                        <a href="pages/exchangers.html" class="btn btn-primary btn-lg cta-btn">Find Exchangers</a>
+                        <a href="#how-it-works" class="btn btn-outline-primary btn-lg cta-btn">How It Works</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center animate-fade-in">
+                    <div class="hero-image-container">
+                        <div class="hero-glow"></div>
+                        <div class="hero-border-effect"></div>
+                        <img 
+                            src="images/exchange-hero.jpg" 
+                            alt="ExChange Platform" 
+                            class="img-fluid hero-image" 
+                            onerror="this.style.display='none'; document.getElementById('hero-fallback').style.display='flex';"
+                        >
+                        <div class="hero-overlay">
+                            <div class="hero-particles"></div>
+                        </div>
+                        <div id="hero-fallback" class="hero-default-bg" style="display: none;">
+                            <div>
+                                <i class="fas fa-exchange-alt fa-3x mb-3"></i>
+                                <div>ExChange Platform</div>
+                                <div class="fs-6 mt-2">The Secure PayPal Exchange Solution</div>
+                            </div>
+                        </div>
+                        <div class="hero-corner-accent top-left"></div>
+                        <div class="hero-corner-accent top-right"></div>
+                        <div class="hero-corner-accent bottom-left"></div>
+                        <div class="hero-corner-accent bottom-right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Statistics Section -->
+    <div class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item animate-fade-in">
+                        <div class="stat-number" data-count="1500000">0</div>
+                        <div class="stat-label">Total Exchanges</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item animate-fade-in" style="animation-delay: 0.2s;">
+                        <div class="stat-number" data-count="240">0</div>
+                        <div class="stat-label">Verified Exchangers</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item animate-fade-in" style="animation-delay: 0.4s;">
+                        <div class="stat-number" data-count="98">0</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item animate-fade-in" style="animation-delay: 0.6s;">
+                        <div class="stat-number" data-count="24">0</div>
+                        <div class="stat-label">Support Available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How ExChange Works</h2>
+                <p>Simple steps to exchange your PayPal funds safely and quickly with verified professional exchangers.</p>
+            </div>
+            <div class="row g-5">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-5">
+                        <div class="card-body">
+                            <div class="icon-wrapper mb-4">
+                                <i class="fas fa-search fa-3x text-primary"></i>
+                            </div>
+                            <h3 class="card-title mb-4">Find Exchangers</h3>
+                            <p class="card-text">Browse through our list of verified exchangers with high success rates. Filter by services, rates, and reviews to find the perfect match.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-5">
+                        <div class="card-body">
+                            <div class="icon-wrapper mb-4">
+                                <i class="fas fa-comments fa-3x text-primary"></i>
+                            </div>
+                            <h3 class="card-title mb-4">Connect Directly</h3>
+                            <p class="card-text">Contact exchangers directly through WhatsApp to discuss your needs, rates, and process. No middlemen, direct communication.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-5">
+                        <div class="card-body">
+                            <div class="icon-wrapper mb-4">
+                                <i class="fas fa-exchange-alt fa-3x text-primary"></i>
+                            </div>
+                            <h3 class="card-title mb-4">Complete Exchange</h3>
+                            <p class="card-text">Finalize your transaction safely with the exchanger of your choice. Rate and review them afterward to help the community.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose ExChange</h2>
+                <p>Our platform provides the best experience for PayPal fund exchanges with key features designed for security and convenience.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="features-item animate-fade-in">
+                        <div class="features-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="features-content">
+                            <h4>Verified Exchangers Only</h4>
+                            <p>Every exchanger on our platform undergoes strict verification to ensure legitimacy and trust. We verify identity, business credentials, and PayPal accounts.</p>
+                        </div>
+                    </div>
+                    <div class="features-item animate-fade-in" style="animation-delay: 0.2s;">
+                        <div class="features-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="features-content">
+                            <h4>Fast Transactions</h4>
+                            <p>Most exchanges are completed within minutes to hours, not days. Our exchangers are known for their quick response times and efficient processing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="features-item animate-fade-in" style="animation-delay: 0.4s;">
+                        <div class="features-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="features-content">
+                            <h4>Rating System</h4>
+                            <p>Our transparent rating system helps you choose the most reliable exchangers based on real user experiences and successful transactions.</p>
+                        </div>
+                    </div>
+                    <div class="features-item animate-fade-in" style="animation-delay: 0.6s;">
+                        <div class="features-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="features-content">
+                            <h4>24/7 Support</h4>
+                            <p>Our dedicated support team is available around the clock to assist with any issues, questions, or concerns during your exchange process.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Users Say</h2>
+                <p>Read about the experiences of users who have successfully used our platform for their exchange needs.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 testimonial-card">
+                        <div class="card-body p-5">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="testimonial-avatar avatar-blue">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">John Smith</h5>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-text">"I've been using ExChange for 6 months now. The platform is very intuitive and I've found reliable exchangers every time. Their verification process gives me peace of mind."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 testimonial-card">
+                        <div class="card-body p-5">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="testimonial-avatar avatar-teal">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Sarah Johnson</h5>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-text">"As someone who regularly needs to exchange PayPal funds, ExChange has been a game-changer for me. The direct contact with exchangers makes the process faster and more transparent."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 testimonial-card">
+                        <div class="card-body p-5">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="testimonial-avatar avatar-orange">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Michael Wong</h5>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-text">"The verification process ensures only legitimate exchangers are on the platform. I feel safe using ExChange for all my transactions, and the rates are better than other services I've tried."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="pages/exchangers.html" class="btn btn-outline-primary btn-lg px-5 py-3">
+                    See All Verified Exchangers <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4 display-4 fw-bold">Ready to exchange your PayPal funds?</h2>
+                    <p class="lead mb-5" style="font-size: 1.3rem; line-height: 1.8;">Join thousands of satisfied users who trust ExChange for their PayPal exchange needs. Our verified exchangers are ready to assist you.</p>
+                    <a href="pages/exchangers.html" class="btn btn-primary btn-lg px-5 py-3">
+                        Find an Exchanger Now <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>ExChange</h5>
+                    <p>The trusted PayPal exchange platform connecting users with verified exchangers.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="pages/exchangers.html">Find Exchangers</a></li>
+                        <li><a href="pages/support.html">Support</a></li>
+                        <li><a href="pages/login.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <address>
+                        <p><i class="fas fa-envelope me-2"></i> support@exchange-platform.com</p>
+                        <div class="social-icons mt-3">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-telegram"></i></a>
+                        </div>
+                    </address>
+                </div>
+            </div>
+            <hr class="mt-4" style="border-color: var(--dark-border);">
+            <div class="text-center">
+                <p>&copy; 2025 ExChange. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Counter animation for statistics - synchronized and smooth
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const animationDuration = 2000; // 2 seconds for all counters to finish
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Start animation for all counters
+                        counters.forEach(counter => {
+                            counter.classList.add('visible');
+                            const target = parseInt(counter.getAttribute('data-count'));
+                            let count = 0;
+                            let suffix = '';
+                            
+                            // Determine suffix based on the counter
+                            if (target === 1500000) {
+                                suffix = 'M+';
+                            } else if (target === 240) {
+                                suffix = '+';
+                            } else if (target === 98) {
+                                suffix = '%';
+                            } else if (target === 24) {
+                                suffix = '/7';
+                            }
+                            
+                            // Calculate increment per frame based on animation duration
+                            const frameDuration = 1000 / 60; // 60fps
+                            const totalFrames = Math.round(animationDuration / frameDuration);
+                            const increment = target / totalFrames;
+                            
+                            let startTime;
+                            
+                            function animate(timestamp) {
+                                if (!startTime) startTime = timestamp;
+                                const progress = timestamp - startTime;
+                                const percentage = Math.min(progress / animationDuration, 1);
+                                
+                                // Use easeOutQuad for smoother deceleration at the end
+                                const easeOutValue = 1 - (1 - percentage) * (1 - percentage);
+                                count = Math.min(Math.floor(target * easeOutValue), target);
+                                
+                                if (target === 1500000) {
+                                    // For million values
+                                    counter.textContent = (count / 1000000).toFixed(1) + suffix;
+                                } else {
+                                    counter.textContent = count + suffix;
+                                }
+                                
+                                if (progress < animationDuration) {
+                                    requestAnimationFrame(animate);
+                                } else {
+                                    // Ensure we end with the exact target value
+                                    if (target === 1500000) {
+                                        counter.textContent = (target / 1000000).toFixed(1) + suffix;
+                                    } else {
+                                        counter.textContent = target + suffix;
+                                    }
+                                    
+                                    // Add pulse animation after counting finishes
+                                    setTimeout(() => {
+                                        counter.classList.add('pulse-animation');
+                                    }, 500);
+                                }
+                            }
+                            
+                            requestAnimationFrame(animate);
+                        });
+                        
+                        // Unobserve once animation triggers
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe the stats section
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        }
+        
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+        });
+    </script>
+</body>
+</html> 

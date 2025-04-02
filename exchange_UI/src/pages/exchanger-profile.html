@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal Exchange Pro - Exchanger Profile | ExChange Platform</title>
+    <meta name="description" content="PayPal Exchange Pro - Verified exchanger specializing in PayPal transactions with over 3 years of experience.">
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Particles Background */
+        .particles-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .particles-bg .particle {
+            position: absolute;
+            display: block;
+            pointer-events: none;
+            background: rgba(94, 114, 235, 0.2);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(94, 114, 235, 0.3);
+            animation: float-particle 25s linear infinite;
+        }
+        
+        .particles-bg .particle:nth-child(1) {
+            width: 50px;
+            height: 50px;
+            left: 25%;
+            top: 30%;
+            animation-delay: 0s;
+            animation-duration: 90s;
+            background: rgba(94, 114, 235, 0.15);
+        }
+        
+        .particles-bg .particle:nth-child(2) {
+            width: 70px;
+            height: 70px;
+            left: 70%;
+            top: 70%;
+            animation-delay: 2s;
+            animation-duration: 110s;
+            background: rgba(118, 76, 235, 0.1);
+        }
+        
+        .particles-bg .particle:nth-child(3) {
+            width: 30px;
+            height: 30px;
+            left: 40%;
+            top: 80%;
+            animation-delay: 5s;
+            animation-duration: 85s;
+            background: rgba(94, 114, 235, 0.12);
+        }
+        
+        .particles-bg .particle:nth-child(4) {
+            width: 80px;
+            height: 80px;
+            left: 85%;
+            top: 15%;
+            animation-delay: 0s;
+            animation-duration: 100s;
+            background: rgba(118, 76, 235, 0.07);
+        }
+        
+        .particles-bg .particle:nth-child(5) {
+            width: 45px;
+            height: 45px;
+            left: 15%;
+            top: 70%;
+            animation-delay: 7s;
+            animation-duration: 115s;
+            background: rgba(94, 114, 235, 0.1);
+        }
+        
+        @keyframes float-particle {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translateY(-300px) rotate(180deg) scale(1.1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-600px) rotate(360deg) scale(1);
+                opacity: 0.4;
+            }
+        }
+        
+        /* Profile Page Specific Styles */
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 40px rgba(94, 114, 235, 0.2);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 80%);
+            transform: rotate(30deg);
+            animation: shine 8s infinite linear;
+            pointer-events: none;
+        }
+        
+        .profile-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at bottom left, rgba(94, 114, 235, 0.3) 0%, transparent 60%), 
+                        radial-gradient(ellipse at top right, rgba(118, 76, 235, 0.3) 0%, transparent 60%);
+            z-index: 1;
+            opacity: 0.6;
+            animation: pulse-gradient 8s infinite alternate;
+        }
+        
+        @keyframes pulse-gradient {
+            0% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.4; }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+        
+        .profile-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: white;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(94, 114, 235, 0.5);
+            position: relative;
+            z-index: 2;
+            transform: translateZ(30px);
+        }
+        
+        .profile-avatar::after {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .profile-avatar:hover {
+            transform: scale(1.08) rotate(5deg) translateZ(40px);
+            border-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(94, 114, 235, 0.7);
+        }
+        
+        .profile-info {
+            padding: 10px 20px;
+            position: relative;
+            z-index: 2;
+            transform: translateZ(20px);
+        }
+        
+        .profile-info h2 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(25, 135, 84, 0.15);
+            color: #20c997;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-left: 10px;
+            box-shadow: 0 0 15px rgba(25, 135, 84, 0.3);
+            animation: pulse-badge 3s infinite;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(25, 135, 84, 0.2);
+            transform: translateZ(25px);
+        }
+        
+        @keyframes pulse-badge {
+            0% { box-shadow: 0 0 15px rgba(25, 135, 84, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(25, 135, 84, 0.5); }
+            100% { box-shadow: 0 0 15px rgba(25, 135, 84, 0.2); }
+        }
+        
+        .profile-nav {
+            border-radius: 0 0 15px 15px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(to right, rgba(18, 18, 24, 0.9), rgba(32, 32, 42, 0.9), rgba(18, 18, 24, 0.9));
+            backdrop-filter: blur(10px);
+            padding: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 70px;
+            z-index: 100;
+        }
+        
+        .profile-nav::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .profile-nav .nav-item {
+            display: inline-block;
+            padding: 18px 30px;
+            color: var(--text-color);
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            letter-spacing: 0.5px;
+        }
+        
+        .profile-nav .nav-item:hover {
+            color: var(--primary);
+            text-shadow: 0 0 15px rgba(94, 114, 235, 0.5);
+        }
+        
+        .profile-nav .nav-item.active {
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(94, 114, 235, 0.7);
+        }
+        
+        .profile-nav .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #87CEFA, transparent);
+            transform: translateX(-50%);
+            transition: width 0.5s ease-in-out, height 0.3s ease;
+            border-radius: 4px 4px 0 0;
+            opacity: 0;
+        }
+        
+        .profile-nav .nav-item:hover::after {
+            width: 60%;
+            opacity: 0.7;
+            height: 3px;
+        }
+        
+        .profile-nav .nav-item.active::after {
+            width: 80%;
+            opacity: 1;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #A7E2FF, #87CEFA, #A7E2FF, transparent);
+            box-shadow: 0 0 15px rgba(135, 206, 250, 0.6);
+            animation: pulse-glow 3s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 8px rgba(135, 206, 250, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(135, 206, 250, 0.6), 0 0 30px rgba(135, 206, 250, 0.4); }
+            100% { box-shadow: 0 0 8px rgba(135, 206, 250, 0.4); }
+        }
+        
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 110px;
+            padding: 18px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transform: translateZ(15px);
+        }
+        
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            transform: rotate(30deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .stat-item:hover::before {
+            opacity: 1;
+            transform: rotate(40deg) scale(1.2);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-8px) translateZ(25px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(94, 114, 235, 0.2);
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            color: white;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+        
+        .tab-content {
+            padding-top: 30px;
+            position: relative;
+        }
+        
+        .tab-pane {
+            display: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            will-change: transform, opacity;
+        }
+        
+        .tab-pane.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.7s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card {
+            border: none;
+            background: rgba(25, 25, 35, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transform: translateZ(0);
+            will-change: transform, box-shadow;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(var(--primary-rgb), 0.1);
+            border: 1px solid rgba(var(--primary-rgb), 0.15);
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .card-title {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), transparent);
+            border-radius: 3px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(var(--primary-rgb), 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-avatar::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .avatar-blue {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+        }
+        
+        .avatar-teal {
+            background: linear-gradient(135deg, #10997a 0%, #20c997 100%);
+        }
+        
+        .review-card {
+            background-color: rgba(28, 28, 38, 0.6);
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background-color: rgba(32, 32, 42, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(var(--primary-rgb), 0.1);
+        }
+        
+        .avatar-small {
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Animation for stat numbers */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .stat-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .profile-nav {
+                overflow-x: auto;
+                white-space: nowrap;
+                justify-content: flex-start;
+            }
+            
+            .profile-info {
+                padding: 20px 15px;
+            }
+        }
+        
+        /* WhatsApp Button Styles */
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            z-index: 2;
+            animation: pulse-whatsapp 2s infinite;
+        }
+        
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+            background: #22c15e;
+            color: white;
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        .whatsapp-button .fab {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        .whatsapp-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+        
+        .whatsapp-button:hover::before {
+            transform: translateX(0);
+        }
+        
+        @keyframes shake {
+            0% { transform: translateY(-5px) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(1deg); }
+            50% { transform: translateY(-5px) rotate(0deg); }
+            75% { transform: translateY(-5px) rotate(-1deg); }
+            100% { transform: translateY(-5px) rotate(0deg); }
+        }
+    </style>
+</head>
+<body class="bg-dark text-white">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">Ex<span class="text-primary">Change</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="exchangers.html">Find Exchangers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="support.html">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="content-wrapper pt-5">
+        <!-- Particles Background -->
+        <div class="particles-bg">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <div class="container pt-4">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center text-md-start">
+                        <div class="profile-avatar mx-auto mx-md-0">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="profile-info">
+                            <h2 class="mb-1 d-inline-block">PayPal Exchange Pro</h2>
+                            <span class="verified-badge">
+                                <i class="fas fa-check-circle me-1"></i> Verified
+                            </span>
+                            <p class="text-light mb-3">Premium PayPal exchange services with fast and secure transactions</p>
+                            
+                            <!-- Stats -->
+                            <div class="stats-container">
+                                <div class="stat-item">
+                                    <div class="stat-number" data-count="2481">0</div>
+                                    <div class="stat-label">Transactions</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" data-count="246">0</div>
+                                    <div class="stat-label">Reviews</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" data-count="4.9">0</div>
+                                    <div class="stat-label">Rating</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" data-count="3">0</div>
+                                    <div class="stat-label">Years</div>
+                                </div>
+                            </div>
+                            
+                            <!-- WhatsApp Contact Button -->
+                            <a href="https://wa.me/14155238886" target="_blank" class="whatsapp-button mt-4">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Chat Now on WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Navigation -->
+            <div class="profile-nav mb-4">
+                <div class="nav-item active" data-tab="overview-tab">
+                    <i class="fas fa-info-circle me-2"></i>Overview
+                </div>
+                <div class="nav-item" data-tab="transactions-tab">
+                    <i class="fas fa-exchange-alt me-2"></i>Transactions
+                </div>
+                <div class="nav-item" data-tab="reviews-tab">
+                    <i class="fas fa-star me-2"></i>Reviews
+                </div>
+                <div class="nav-item" data-tab="rules-tab">
+                    <i class="fas fa-gavel me-2"></i>Rules
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Overview Tab -->
+                <div id="overview-tab" class="tab-pane active">
+                    <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">About PayPal Exchange Pro</h3>
+                        <p>PayPal Exchange Pro is one of our top-rated exchangers with over 3 years of experience in PayPal fund exchanges. Specializing in secure and fast transactions, they have built a solid reputation for reliability and customer satisfaction.</p>
+                        <p>They offer competitive rates and are known for their quick response times and professional service. Available 24/7 to assist with your exchange needs.</p>
+                        <div class="mt-4">
+                            <h5>Services Offered:</h5>
+                            <ul>
+                                <li>PayPal to Bank Transfer</li>
+                                <li>PayPal to Cryptocurrency</li>
+                                <li>International PayPal Exchanges</li>
+                                <li>Business PayPal Accounts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                    <!-- Testimonials -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title mb-4">Testimonials</h3>
+                            <div class="testimonial-carousel">
+                                <div class="testimonial-item p-4 bg-dark-bg rounded-3 mb-3">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="testimonial-avatar avatar-blue me-3">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="mb-0">James Wilson</h5>
+                                            <div class="text-warning">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mb-0">"I've been using PayPal Exchange Pro for my business transactions for over a year now. Their service is unmatched in terms of reliability and speed. Highly recommended!"</p>
+                                </div>
+                                <div class="testimonial-item p-4 bg-dark-bg rounded-3">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="testimonial-avatar avatar-teal me-3">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="mb-0">Emma Roberts</h5>
+                                            <div class="text-warning">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mb-0">"As someone who regularly needs to exchange funds between PayPal and crypto, this exchanger has been a lifesaver. Fast, reliable, and great customer service!"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Transactions Tab -->
+                <div id="transactions-tab" class="tab-pane">
+                    <div class="card mb-4">
+                    <div class="card-body">
+                            <h3 class="card-title mb-4">Transaction History</h3>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                            <th>Transaction ID</th>
+                                        <th>Amount</th>
+                                        <th>Type</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mar 25, 2023</td>
+                                            <td><small class="text-muted">#TRX-28954</small></td>
+                                        <td>$1,200</td>
+                                        <td>PayPal to Bank</td>
+                                        <td><span class="badge success-badge">Completed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mar 23, 2023</td>
+                                            <td><small class="text-muted">#TRX-28932</small></td>
+                                        <td>$850</td>
+                                        <td>PayPal to Crypto</td>
+                                        <td><span class="badge success-badge">Completed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mar 22, 2023</td>
+                                            <td><small class="text-muted">#TRX-28901</small></td>
+                                        <td>$3,000</td>
+                                        <td>PayPal to Bank</td>
+                                        <td><span class="badge success-badge">Completed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mar 20, 2023</td>
+                                            <td><small class="text-muted">#TRX-28876</small></td>
+                                        <td>$500</td>
+                                        <td>PayPal to Crypto</td>
+                                        <td><span class="badge success-badge">Completed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mar 18, 2023</td>
+                                            <td><small class="text-muted">#TRX-28830</small></td>
+                                        <td>$1,500</td>
+                                        <td>PayPal to Bank</td>
+                                        <td><span class="badge success-badge">Completed</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <a href="#" class="btn btn-outline-primary">View More Transactions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reviews Tab -->
+                <div id="reviews-tab" class="tab-pane">
+                    <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Customer Reviews</h3>
+                        
+                            <!-- Rating summary -->
+                            <div class="row mb-4">
+                                <div class="col-md-4 text-center border-end">
+                                    <div class="display-4 fw-bold text-primary">4.9</div>
+                                    <div class="rating-stars text-warning mb-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <div class="text-muted">Based on 246 reviews</div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="rating-bars px-3">
+                                        <!-- 5 Stars -->
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="text-muted me-2" style="width: 60px;">5 stars</div>
+                                            <div class="progress flex-grow-1" style="height: 10px;">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: 85%"></div>
+                                            </div>
+                                            <div class="ms-2 text-muted">85%</div>
+                                        </div>
+                                        <!-- 4 Stars -->
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="text-muted me-2" style="width: 60px;">4 stars</div>
+                                            <div class="progress flex-grow-1" style="height: 10px;">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: 10%"></div>
+                                            </div>
+                                            <div class="ms-2 text-muted">10%</div>
+                                        </div>
+                                        <!-- 3 Stars -->
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="text-muted me-2" style="width: 60px;">3 stars</div>
+                                            <div class="progress flex-grow-1" style="height: 10px;">
+                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 3%"></div>
+                                            </div>
+                                            <div class="ms-2 text-muted">3%</div>
+                                        </div>
+                                        <!-- 2 Stars -->
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="text-muted me-2" style="width: 60px;">2 stars</div>
+                                            <div class="progress flex-grow-1" style="height: 10px;">
+                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 1%"></div>
+                                            </div>
+                                            <div class="ms-2 text-muted">1%</div>
+                                        </div>
+                                        <!-- 1 Star -->
+                                        <div class="d-flex align-items-center">
+                                            <div class="text-muted me-2" style="width: 60px;">1 star</div>
+                                            <div class="progress flex-grow-1" style="height: 10px;">
+                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 1%"></div>
+                                            </div>
+                                            <div class="ms-2 text-muted">1%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Review list -->
+                            <div class="review-list">
+                        <!-- Review 1 -->
+                        <div class="review-card p-3 mb-3">
+                            <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-small rounded-circle d-flex align-items-center justify-content-center bg-primary text-white me-3">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                <div>
+                                    <h6 class="mb-0">John Smith</h6>
+                                    <div class="d-flex align-items-center">
+                                        <div class="rating-stars me-2 text-warning" style="font-size: 0.8rem;">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <small class="text-muted">Mar 25, 2023</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0">"Exceptional service! The transaction was completed within 10 minutes. Very professional and reliable. I will definitely use their services again."</p>
+                        </div>
+                        
+                        <!-- Review 2 -->
+                        <div class="review-card p-3 mb-3">
+                            <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-small rounded-circle d-flex align-items-center justify-content-center bg-info text-white me-3">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                <div>
+                                    <h6 class="mb-0">Sarah Johnson</h6>
+                                    <div class="d-flex align-items-center">
+                                        <div class="rating-stars me-2 text-warning" style="font-size: 0.8rem;">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <small class="text-muted">Mar 20, 2023</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0">"Fast and secure transaction. The exchanger was very helpful and answered all my questions. Great rates too! Highly recommended."</p>
+                        </div>
+                        
+                        <!-- Review 3 -->
+                        <div class="review-card p-3 mb-3">
+                            <div class="d-flex align-items-center mb-3">
+                                        <div class="avatar-small rounded-circle d-flex align-items-center justify-content-center bg-warning text-white me-3">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                <div>
+                                    <h6 class="mb-0">Michael Wong</h6>
+                                    <div class="d-flex align-items-center">
+                                        <div class="rating-stars me-2 text-warning" style="font-size: 0.8rem;">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <small class="text-muted">Mar 15, 2023</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0">"I've been using PayPal Exchange Pro for over a year now. They are always available and provide excellent service. Best exchanger on the platform!"</p>
+                        </div>
+                        
+                        <!-- See More Reviews Link -->
+                        <div class="text-center mt-4">
+                            <a href="#" class="btn btn-outline-primary">See All 246 Reviews</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+                
+                <!-- Rules Tab -->
+                <div id="rules-tab" class="tab-pane">
+                    <div class="card mb-4">
+                    <div class="card-body">
+                            <h3 class="card-title mb-4">Terms of Service & Rules</h3>
+                            
+                            <div class="rules-section">
+                                <h5 class="mb-3">1. General Terms</h5>
+                                <ul class="mb-4">
+                                    <li>All transactions are processed within 5-30 minutes during our operating hours.</li>
+                                    <li>We reserve the right to request additional verification for transactions over $5,000.</li>
+                                    <li>By using our service, you agree to these terms and conditions.</li>
+                                    <li>Rates are subject to change based on market conditions.</li>
+                                </ul>
+                                
+                                <h5 class="mb-3">2. Transaction Rules</h5>
+                                <ul class="mb-4">
+                                    <li>Minimum transaction amount: $50 USD</li>
+                                    <li>Maximum transaction amount: $10,000 USD per day</li>
+                                    <li>All transactions must be initiated through our official WhatsApp channel.</li>
+                                    <li>Transaction confirmations will be provided for every completed exchange.</li>
+                                </ul>
+                                
+                                <h5 class="mb-3">3. Fees & Rates</h5>
+                                <ul class="mb-4">
+                                    <li>Our fee structure is transparent and will be provided before each transaction.</li>
+                                    <li>PayPal to Bank transfers: 2.5% fee</li>
+                                    <li>PayPal to Crypto exchanges: 3% fee</li>
+                                    <li>International PayPal exchanges: 3.5% fee</li>
+                                </ul>
+                                
+                                <h5 class="mb-3">4. Cancellation Policy</h5>
+                                <ul class="mb-4">
+                                    <li>Cancellations must be made before the transaction is processed.</li>
+                                    <li>Once a transaction is completed, it cannot be reversed.</li>
+                                    <li>Disputes should be submitted within 24 hours of transaction completion.</li>
+                                </ul>
+                                
+                                <h5 class="mb-3">5. Privacy & Security</h5>
+                                <ul>
+                                    <li>We maintain strict confidentiality of all customer information.</li>
+                                    <li>Your personal data is encrypted and securely stored.</li>
+                                    <li>We do not share your information with third parties without your consent.</li>
+                                    <li>We recommend using secure communication channels for all exchanges.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark-secondary border-top border-secondary text-white">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-4">About ExChange</h5>
+                    <p>The leading platform connecting users with verified exchangers for secure digital currency transactions.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="exchangers.html">Find Exchangers</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled footer-contact">
+                        <li class="mb-2"><i class="far fa-envelope me-2"></i> support@exchange-platform.com</li>
+                        <li class="mb-2"><i class="fas fa-phone-alt me-2"></i> +1 (555) 123-4567</li>
+                        <li class="mb-2"><i class="fab fa-telegram-plane me-2"></i> @ExChangePlatform</li>
+                        <li class="mb-2"><i class="far fa-clock me-2"></i> 24/7 Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bg-dark-tertiary py-3">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                        <p class="mb-0">&copy; 2025 ExChange Platform. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                            <li class="list-inline-item"><span class="text-muted mx-2">|</span></li>
+                            <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script>
+        // Enhanced Tab Navigation with Animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all tab navigation items
+            const tabLinks = document.querySelectorAll('.profile-nav .nav-item');
+            
+            // Add click event listeners to tab links
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the target tab ID from data attribute
+                    const targetTabId = this.getAttribute('data-tab');
+                    
+                    // Don't do anything if the tab is already active
+                    if (this.classList.contains('active')) return;
+                    
+                    // Remove active class from all nav items and add to clicked one with animation
+                    tabLinks.forEach(item => item.classList.remove('active'));
+                    
+                    // Add extra animation flash to the active item
+                    this.style.transition = 'all 0.3s ease';
+                    this.style.textShadow = '0 0 20px var(--primary)';
+                    
+                    setTimeout(() => {
+                        this.style.textShadow = '';
+                        this.classList.add('active');
+                    }, 200);
+                    
+                    // Show the selected tab content with enhanced transition
+                    showTabContent(targetTabId);
+                });
+            });
+            
+            // Function to show the selected tab content with smooth transitions
+            function showTabContent(tabId) {
+                // Get all tab panes and the target tab
+                const tabPanes = document.querySelectorAll('.tab-pane');
+                const selectedTab = document.getElementById(tabId);
+                
+                // Hide all tab content with animated transition
+                tabPanes.forEach(pane => {
+                    if (pane.classList.contains('active')) {
+                        pane.style.opacity = '0';
+                        pane.style.transform = 'translateY(-10px)';
+                        
+                        setTimeout(() => {
+                            pane.classList.remove('active');
+                        }, 300);
+                    } else {
+                        pane.classList.remove('active');
+                    }
+                });
+                
+                // Show the selected tab with animated transition
+                if (selectedTab) {
+                    setTimeout(() => {
+                        selectedTab.classList.add('active');
+                        
+                        // Small delay to ensure the display:block has been applied before animating
+                        setTimeout(() => {
+                            selectedTab.style.opacity = '1';
+                            selectedTab.style.transform = 'translateY(0)';
+                            
+                            // Animate the cards in the visible tab
+                            const cards = selectedTab.querySelectorAll('.card');
+                            cards.forEach((card, index) => {
+                                card.style.opacity = '0';
+                                card.style.transform = 'translateY(20px)';
+                                
+                                setTimeout(() => {
+                                    card.style.transition = 'all 0.5s ease';
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, 100 + (index * 100)); // Staggered animation
+                            });
+                        }, 50);
+                        
+                        // Scroll to the top of the content area for better UX
+                        selectedTab.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 300);
+                }
+            }
+            
+            // Enhanced Counter Animation with Smoother Transitions
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            function animateCounters() {
+                statNumbers.forEach(stat => {
+                    const target = parseFloat(stat.getAttribute('data-count'));
+                    let current = 0;
+                    const duration = 2000; // Animation duration in milliseconds
+                    const increment = target / 60; // For 60fps
+                    const isDecimal = !Number.isInteger(target);
+                    const startTime = performance.now();
+                    
+                    function updateCounter(timestamp) {
+                        const elapsed = timestamp - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        
+                        // Easing function for smoother animation
+                        const easedProgress = 1 - Math.pow(1 - progress, 3); // Cubic ease out
+                        
+                        current = target * easedProgress;
+                        
+                        // Format based on whether the target is a decimal
+                        if (isDecimal) {
+                            stat.innerText = current.toFixed(1);
+                        } else {
+                            stat.innerText = Math.round(current);
+                        }
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            // Ensure we end at exactly the target value
+                            if (isDecimal) {
+                                stat.innerText = target.toFixed(1);
+                            } else {
+                                stat.innerText = target;
+                            }
+                            
+                            // Add glow effect on completion
+                            stat.style.textShadow = '0 0 15px rgba(255, 255, 255, 0.7)';
+                            setTimeout(() => {
+                                stat.style.textShadow = '';
+                                stat.classList.add('stat-pulse');
+                            }, 300);
+                        }
+                    }
+                    
+                    requestAnimationFrame(updateCounter);
+                });
+            }
+            
+            // Start counter animation with a slight delay for better UX
+            setTimeout(animateCounters, 500);
+            
+            // Adjust the layout for proper footer positioning
+            function adjustLayout() {
+                const navbar = document.querySelector('.navbar');
+                const footer = document.querySelector('footer');
+                const contentWrapper = document.querySelector('.content-wrapper');
+                
+                if (navbar && footer && contentWrapper) {
+                    const navbarHeight = navbar.offsetHeight;
+                    const footerHeight = footer.offsetHeight;
+                    const windowHeight = window.innerHeight;
+                    
+                    const minHeight = windowHeight - navbarHeight - footerHeight;
+                    contentWrapper.style.minHeight = `${minHeight}px`;
+                }
+            }
+            
+            // Run on page load and window resize
+            window.addEventListener('resize', adjustLayout);
+            adjustLayout(); // Initial call
+            
+            // Add entry animations to elements on page load
+            function addEntryAnimations() {
+                // Animate profile header
+                const profileHeader = document.querySelector('.profile-header');
+                profileHeader.style.opacity = '0';
+                profileHeader.style.transform = 'translateY(-20px)';
+                
+                setTimeout(() => {
+                    profileHeader.style.transition = 'all 0.8s ease';
+                    profileHeader.style.opacity = '1';
+                    profileHeader.style.transform = 'translateY(0)';
+                }, 300);
+                
+                // Animate navigation tabs
+                const navItems = document.querySelectorAll('.profile-nav .nav-item');
+                navItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(10px)';
+                    
+                    setTimeout(() => {
+                        item.style.transition = 'all 0.5s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 500 + (index * 100));
+                });
+                
+                // Show the initial tab content with animation
+                setTimeout(() => {
+                    const activeTab = document.querySelector('.tab-pane.active');
+                    if (activeTab) {
+                        const cards = activeTab.querySelectorAll('.card');
+                        cards.forEach((card, index) => {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            
+                            setTimeout(() => {
+                                card.style.transition = 'all 0.6s ease';
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 800 + (index * 120));
+                        });
+                    }
+                }, 600);
+            }
+            
+            // Run entry animations
+            addEntryAnimations();
+            
+            // Add 3D tilt effect to all cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left; // x position within the element
+                    const y = e.clientY - rect.top; // y position within the element
+                    
+                    const xCenter = rect.width / 2;
+                    const yCenter = rect.height / 2;
+                    
+                    // Calculate rotation based on mouse position
+                    const xRotation = (y - yCenter) / 20;
+                    const yRotation = (xCenter - x) / 20;
+                    
+                    // Apply the transformation
+                    card.style.transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale3d(1.02, 1.02, 1.02)`;
+                    card.style.transition = 'transform 0.1s ease';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    // Reset on mouse leave
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(-5px)';
+                    card.style.transition = 'transform 0.5s ease';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

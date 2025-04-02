@@ -1,0 +1,109 @@
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(94, 114, 235, 0.3);
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+    background: linear-gradient(135deg, #5E72EB 0%, #8E96F3 100%);
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-image-container:hover .hero-image {
+    transform: scale(1.1) rotate(5deg);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(94, 114, 235, 0.4) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+    mix-blend-mode: overlay;
+}
+
+.hero-border-effect {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #5E72EB, #8E96F3);
+    z-index: -1;
+    animation: borderGlow 3s ease-in-out infinite;
+    box-shadow: 0 0 30px rgba(94, 114, 235, 0.5);
+}
+
+.hero-corner-accent {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #5E72EB, transparent);
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 0 0 20px rgba(94, 114, 235, 0.3);
+}
+
+.hero-corner-accent.top-left {
+    top: -30px;
+    left: -30px;
+    animation: float 6s ease-in-out infinite;
+    background: linear-gradient(135deg, #5E72EB, #8E96F3);
+}
+
+.hero-corner-accent.top-right {
+    top: -30px;
+    right: -30px;
+    animation: float 6s ease-in-out infinite 1.5s;
+    background: linear-gradient(135deg, #8E96F3, #5E72EB);
+}
+
+.hero-corner-accent.bottom-left {
+    bottom: -30px;
+    left: -30px;
+    animation: float 6s ease-in-out infinite 3s;
+    background: linear-gradient(135deg, #5E72EB, #8E96F3);
+}
+
+.hero-corner-accent.bottom-right {
+    bottom: -30px;
+    right: -30px;
+    animation: float 6s ease-in-out infinite 4.5s;
+    background: linear-gradient(135deg, #8E96F3, #5E72EB);
+}
+
+@keyframes borderGlow {
+    0%, 100% { 
+        opacity: 0.5;
+        box-shadow: 0 0 30px rgba(94, 114, 235, 0.5);
+    }
+    50% { 
+        opacity: 1;
+        box-shadow: 0 0 50px rgba(94, 114, 235, 0.8);
+    }
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg);
+    }
+    50% { 
+        transform: translateY(-20px) rotate(5deg);
+    }
+} 

@@ -1,0 +1,17 @@
+{
+  "name": "exchange-ui",
+  "version": "1.0.0",
+  "description": "ExChange PayPal Exchange Platform UI",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "exchange-ui": "file:",
+    "tailwindcss": "^3.3.6"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
