@@ -2,6 +2,10 @@
 
 A modern, responsive web application for PayPal exchange services, built with Bootstrap and TailwindCSS.
 
+## Live Demo
+
+Visit the live application: [ExChange Platform](https://exchange-6w7bbi97i-crosby01s-projects.vercel.app)
+
 ## Overview
 
 ExChange is a user-friendly platform that facilitates PayPal exchange transactions. The platform features a clean, modern interface with a focus on user experience and security.
