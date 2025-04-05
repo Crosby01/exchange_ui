@@ -4,7 +4,7 @@ A modern, responsive web application for PayPal exchange services, built with Bo
 
 ## Live Demo
 
-Visit the live application: [ExChange Platform](https://exchange-paypal.vercel.app)
+Visit the live application: [ExChange Platform](https://exchange-lroh87kv7-crosby01s-projects.vercel.app)
 
 ## Overview
 
